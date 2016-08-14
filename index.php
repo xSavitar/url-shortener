@@ -8,7 +8,7 @@
   <title>URL Shortener - d3r1ck</title>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
 
@@ -21,16 +21,14 @@
           <h4>d3r1ck</h4>
 
           <div class="row">
-
-            <div class="col-lg-12">
+          <div class="col-lg-12">
               <div class="input-group input-group-lg">
-                <input id="url-field" type="text" class="form-control" placeholder="Paste a link here...">
+                <input id="urlfield" type="text" name="link" class="form-control" placeholder="Paste a link here...">
                 <span class="input-group-btn">
                   <button class="btn btn-shorten" type="button">SHORTEN URL</button>
                 </span>
               </div>
             </div>
-
             <div class="col-lg-12">
               <div id="link"></div>
             </div>
@@ -44,6 +42,6 @@
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="{{ url_for('static', filename='javascript/shorten.js') }}"></script>
+  <script src="javascript/shorten.js"></script>
 </body>
 </html>

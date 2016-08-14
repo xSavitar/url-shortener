@@ -1,6 +1,6 @@
 <?php
 //Official Link to server
-$LINK = "localhost:3000/";
+$LINK = "tools.wmflabs.org/durl-shortener/";
 
 $link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 

@@ -3,7 +3,7 @@
 	include("db-connection.php");
 
 	//Official Link to server
-	$LINK = "localhost:3000";
+	$LINK = "tools.wmflabs.org/durl-shortener";
 
 	//make sure the post is parsed and data is gotten
 	if(isset($_POST['link']) && !empty($_POST['link'])) {

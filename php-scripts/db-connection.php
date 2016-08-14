@@ -1,15 +1,15 @@
 <?php
 	// Local configurations
-	$HOST = "localhost";
+	/*$HOST = "localhost";
 	$USER = "root";
 	$PASS = "root";
-	$DATABASE = "url_shortener";
+	$DATABASE = "url_shortener";*/
 
 	// Tool Labs configurations
-	/*HOST = "localhost";
-	USER = "root";
-	PASS = "root";
-	DATABASE = "url_shortener";*/
+	$HOST = "10.68.23.58";
+	$USER = "s53107";
+	$PASS = "root";
+	$DATABASE = "T64XAOjRnDwziUN5";
 
 	$conn = mysql_connect($HOST, $USER, $PASS);
 

@@ -8,8 +8,8 @@
 	// Tool Labs configurations
 	$HOST = "10.68.23.58";
 	$USER = "s53107";
-	$PASS = "root";
-	$DATABASE = "T64XAOjRnDwziUN5";
+	$PASS = "T64XAOjRnDwziUN5";
+	$DATABASE = "s53107__url_shortener";
 
 	$conn = mysql_connect($HOST, $USER, $PASS);
 

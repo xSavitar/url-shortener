@@ -11,3 +11,7 @@ app = flask.Flask(__name__)
 def index():
     """Routes to the home page of the application"""
     return render_template('index.html')
+
+@app.route('/api/shorten')
+def shorten_url():
+	"""This route does the shortening of the links"""

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from url-shortener import app
+from urlshortener import app
 
 if __name__ == '__main__':
 	app.debug = True

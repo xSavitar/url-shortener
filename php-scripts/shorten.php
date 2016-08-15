@@ -10,7 +10,7 @@
 		$long_link = $_POST['link'];
 		$hash = substr(strtolower(preg_replace('/[0-9_\/]+/','', base64_encode(sha1($long_link)))),0,8);
 
-		$short_link = $LINK . '/' . $hash;
+		$short_link = $LINK . '/shortener.php/' . $hash;
 
 		$query = "INSERT INTO urls (id, short_url, long_url) VALUES ('', '$short_link', '$long_link');";
 

@@ -17,6 +17,7 @@
 
 	// get the current link when visited
 	$link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$http_host = "$_SERVER[HTTP_HOST]";
 
 	//make sure the post is parsed and data is gotten
 	if(isset($_POST['link']) && !empty($_POST['link'])) {
@@ -50,6 +51,16 @@
 		if(!$res) {
 			die("Error running query" . $db_utilities->error());
 		}
+
+		/*if( $http_host === "localhost:3000" ){
+
+			echo json_encode(array("shortUrl"=> $short_link, "hash"=>$hash, "redirectlink"=> $http_host . '/shortener.php/'));        	
+
+        } else {
+
+        	echo json_encode(array("shortUrl"=> $short_link, "hash"=>$hash, "redirectlink"=> $http_host . '/durl-shortener/shortener.php'));
+
+        }*/
 
         echo json_encode(array("shortUrl"=> $short_link, "hash"=>$hash));
     }

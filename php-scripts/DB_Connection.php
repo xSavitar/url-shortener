@@ -8,7 +8,7 @@ class DB_Connection
 	/**
 	 * @var $host
 	 */
-	public $host;
+	private $host;
 
 	/**
 	 * @var $username

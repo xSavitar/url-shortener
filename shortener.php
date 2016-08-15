@@ -1,32 +1,7 @@
 <?php
-//Official Link to server
-$LINK = "tools.wmflabs.org/durl-shortener/shortener.php/";
 
-$link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-//return var_dump($link);
-
-if ($LINK === $link) {
-    
-}
-
-else {
-    include 'php-scripts/db-connection.php';
-
-    $query = "SELECT * FROM urls WHERE short_url='$link';";
-
-    $results = mysql_query($query);
-    if(!$results){
-      die();
-    }
-    if($results > 0){
-       $row = mysql_fetch_row($results);
-       header("Location: " . $row[2] . "");
-    }
-    else {
-      header("Location: shortener.php");
-    }
-}
+// Include the Checker.php file
+include 'php-scripts/Checker.php';
 
 ?>
 

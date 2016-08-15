@@ -1,15 +1,24 @@
 <?php
+
+/**
+* Database class 
+*/
+class ClassName extends AnotherClass
+{
+	
+	
+}
 	// Local configurations
-	/*$HOST = "localhost";
+	$HOST = "localhost";
 	$USER = "root";
 	$PASS = "root";
-	$DATABASE = "url_shortener";*/
+	$DATABASE = "url_shortener";
 
 	// Tool Labs configurations
-	$HOST = "tools.labsdb";
+	/*$HOST = "tools.labsdb";
 	$USER = "s53107";
 	$PASS = "T64XAOjRnDwziUN5";
-	$DATABASE = "s53107__url_shortener";
+	$DATABASE = "s53107__url_shortener";*/
 
 	$conn = mysql_connect($HOST, $USER, $PASS);
 

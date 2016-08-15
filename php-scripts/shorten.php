@@ -52,7 +52,7 @@
 			die("Error running query" . $db_utilities->error());
 		}
 
-		/*if( $http_host === "localhost:3000" ){
+		if( $http_host === "localhost:3000" ){
 
 			echo json_encode(array("shortUrl"=> $short_link, "hash"=>$hash, "redirectlink"=> $http_host . '/shortener.php/'));        	
 
@@ -60,7 +60,5 @@
 
         	echo json_encode(array("shortUrl"=> $short_link, "hash"=>$hash, "redirectlink"=> $http_host . '/durl-shortener/shortener.php'));
 
-        }*/
-
-        echo json_encode(array("shortUrl"=> $short_link, "hash"=>$hash));
+        }
     }

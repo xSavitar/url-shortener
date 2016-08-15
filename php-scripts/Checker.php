@@ -4,7 +4,7 @@ include 'DB_Connection.php';
 include 'DB_Utilities.php';
 
 // official link to wmflabs server
-$LINK_TL = "tools.wmflabs.org/durl-shortener/shortener.php/";
+$LINK_TL = "tools.wmflabs.org/durl-shortener/shortener.php";
 
 // official link to the localhost server
 $LINK_LH = "localhost:3000/shortener.php";
@@ -21,7 +21,16 @@ if ( $LINK_TL === $link ) {
 }
 
 else {
-    $database_obj = new DB_Connection( null, null, null );
+    if ( $LINK_TL == "localhost" ) {
+    
+      $database_obj = new DB_Connection( null, null, null );
+
+    } else {
+
+      $database_obj = new DB_Connection( '', '', '' );
+
+    }
+
     $connection = $database_obj->db_connection();
     $database_obj->db_select($connection);
 
@@ -35,6 +44,7 @@ else {
     }
     if($results > 0){
        $row = $db_utility_obj->db_fetch_row($results);
+       //return var_dump("I am here....");
        header("Location: " . $row[2] . "");
     }
     else {

@@ -1,7 +1,28 @@
 <?php
 
-// Include the Checker.php file
-include 'php-scripts/Checker.php';
+// official link to wmflabs server
+$LINK_TL = "tools.wmflabs.org/durl-shortener/shortener.php";
+
+// official link to the localhost server
+$LINK_LH = "localhost:3000/shortener.php";
+
+// get the current link when visited
+$link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+if ( $LINK_TL === $link ) {
+
+
+} elseif ( $LINK_LH === $link ) {
+
+
+} else {
+
+    // Include the Checker.php file
+    include 'php-scripts/Checker.php';
+
+    exit();
+
+}
 
 ?>
 

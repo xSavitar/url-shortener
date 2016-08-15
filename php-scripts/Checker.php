@@ -21,13 +21,13 @@ if ( $LINK_TL === $link ) {
 }
 
 else {
-    if ( $LINK_TL == "localhost" ) {
+    if ( $LINK_TL != "localhost" ) {
     
       $database_obj = new DB_Connection( null, null, null );
 
     } else {
 
-      $database_obj = new DB_Connection( '', '', '' );
+      $database_obj = new DB_Connection( 'host', 'username', 'password' );
 
     }
 

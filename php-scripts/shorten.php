@@ -26,7 +26,7 @@
 		if ( $LINK_TL_SCRIPT === $link ) {
 
     		$short_link = $LINK_TL . '/' . $hash;
-    		$database_obj = new DB_Connection( '', '', '' );
+    		$database_obj = new DB_Connection( 'host', 'username', 'password' );
 
 
 		} else if ( $LINK_LH_SCRIPT === $link ) {

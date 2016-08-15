@@ -39,4 +39,12 @@ class DB_Utilities extends DB_Connection
 
 		return $db;
 	}
+	
+	// Fetch number of records from DB
+	public function db_num_rows( $results )
+	{
+		$output = mysql_num_rows( $results );
+
+		return $output;
+	}
 }

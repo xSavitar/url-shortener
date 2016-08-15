@@ -32,22 +32,24 @@ else {
     }
 
     $connection = $database_obj->db_connection();
-    $database_obj->db_select($connection);
+    $database_obj->db_select( $connection );
 
     $query = "SELECT * FROM urls WHERE short_url='$link';";
 
     $db_utility_obj = new DB_Utilities();
 
-    $results = $db_utility_obj->db_query($query);
-    if(!$results){
+    $results = $db_utility_obj->db_query( $query );
+    if( !$results ){
+    
       die();
+      
     }
-    if($results > 0){
-       $row = $db_utility_obj->db_fetch_row($results);
+    if( $results > 0 ){
+       $row = $db_utility_obj->db_fetch_row( $results );
        //return var_dump("I am here....");
-       header("Location: " . $row[2] . "");
+       header( "Location: " . $row[2] . "" );
     }
     else {
-      header("Location: shortener.php");
+      header( "Location: shortener.php" );
     }
 }

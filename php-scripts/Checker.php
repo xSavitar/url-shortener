@@ -21,7 +21,7 @@ if ( $LINK_TL === $link ) {
 }
 
 else {
-    if ( $LINK_TL != "localhost" ) {
+    if ( $_SERVER[HTTP_HOST] == "localhost:3000" ) {
     
       $database_obj = new DB_Connection( null, null, null );
 

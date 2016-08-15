@@ -32,14 +32,14 @@ else {
     }
 
     $connection = $database_obj->db_connection();
-    $database_obj->db_select( $connection );
+    $database_obj->db_select($connection);
 
     $query = "SELECT * FROM urls WHERE short_url='$link';";
 
     $db_utility_obj = new DB_Utilities();
 
     $results = $db_utility_obj->db_query( $query );
-    if( !$results ){
+    if(!$results){
     
       die();
       

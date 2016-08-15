@@ -51,7 +51,7 @@
 			
 		}
 		
-		if( $db_utilities->db_num_rows( $res ) > 0 ){
+		if( $db_utilities->db_num_row( $res ) > 0 ){
 			
 			$results = $db_utilities->db_fetch_row( $res );
 			

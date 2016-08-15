@@ -25,4 +25,18 @@ class DB_Utilities extends DB_Connection
 	{
 		return mysql_error();
 	}
+
+	// Connect to DB
+	public function db_connect($host, $username, $password){
+		$conn = mysql_connect($host, $username, $password);
+
+		return $conn;
+	}
+
+	// Select DB
+	public function db_select($database, $conn){
+		$db = mysql_select_db($database, $conn);
+
+		return $db;
+	}
 }

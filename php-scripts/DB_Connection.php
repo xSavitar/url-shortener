@@ -8,7 +8,7 @@ class DB_Connection
 	/**
 	 * @var $host
 	 */
-	private $host;
+	public $host;
 
 	/**
 	 * @var $username
@@ -35,12 +35,14 @@ class DB_Connection
 			$this->username = "root";
 			$this->password = "root";
 			$this->database = "url_shortener";
-		} else {
+
+			return ;
+		} 
+
 		$this->host = "tools.labsdb";
 		$this->username = "s53107";
 		$this->password = "T64XAOjRnDwziUN5";
 		$this->database = "url_shortener";
-		}
 	}
 
 	/**
@@ -49,7 +51,9 @@ class DB_Connection
 	 */
 	public function db_connection()
 	{
-		$conn_handler = mysql_connect( $this->host, $this->username, $this->password );
+		$db_utilities = new DB_Utilities();
+
+		$conn_handler = $db_utilities->db_connect( $this->host, $this->username, $this->password );
 
 		return $conn_handler;
 	}
@@ -60,11 +64,13 @@ class DB_Connection
 	 */
 	public function db_select( $conn_handler )
 	{
+		$db_utilities = new DB_Utilities();
+
 		if ( !$conn_handler ) {
-			die( "Unable to connect to database " . mysql_error() );
+			die( "Unable to connect to database " . $db_utilities->error() );
 		}
 
-		$database = mysql_select_db( $this->database, $conn_handler );
+		$database = $db_utilities->db_select( $this->database, $conn_handler );
 
 		return $database;
 	}

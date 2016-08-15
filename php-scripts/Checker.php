@@ -14,6 +14,8 @@ $link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 if ( $LINK_TL === $link ) {
     
+  $database_obj = new DB_Connection( '', '', '' );
+
 } elseif ( $LINK_LH === $link ) {
 
 }

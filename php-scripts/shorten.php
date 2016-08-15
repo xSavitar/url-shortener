@@ -26,10 +26,13 @@
 		if ( $LINK_TL_SCRIPT === $link ) {
 
     		$short_link = $LINK_TL . '/' . $hash;
+    		$database_obj = new DB_Connection( '', '', '' );
+
 
 		} else if ( $LINK_LH_SCRIPT === $link ) {
 
 			$short_link = $LINK_LH . '/' . $hash;
+			$database_obj = new DB_Connection( null, null, null );
 
 		} else {
 
@@ -37,7 +40,6 @@
 
 		$query = "INSERT INTO urls (id, short_url, long_url) VALUES ('', '$short_link', '$long_link');";
 
-		$database_obj = new DB_Connection( null, null, null );
 	    $connection = $database_obj->db_connection();
 	    $database_obj->db_select($connection);
 

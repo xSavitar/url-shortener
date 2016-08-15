@@ -42,7 +42,7 @@ class DB_Connection
 		$this->host = "tools.labsdb";
 		$this->username = "s53107";
 		$this->password = "T64XAOjRnDwziUN5";
-		$this->database = "url_shortener";
+		$this->database = "s53107__url_shortener";
 	}
 
 	/**

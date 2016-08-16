@@ -51,7 +51,7 @@ if ( $LINK_TL === $link ) {
           <div class="row">
           <div class="col-lg-12">
               <div class="input-group input-group-lg">
-                <input id="urlfield" type="text" name="link" class="form-control" placeholder="Paste a link here...">
+                <input id="urlfield" type="text" name="link" class="form-control" placeholder="Paste a link here..." required>
                 <span class="input-group-btn">
                   <button class="btn btn-shorten" type="button">SHORTEN URL</button>
                 </span>
@@ -72,6 +72,6 @@ if ( $LINK_TL === $link ) {
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="javascript/shorten.js"></script>
-  <script src="javascript/shorten.js"></script>
+  <script src="javascript/validate.js"></script>
 </body>
 </html>

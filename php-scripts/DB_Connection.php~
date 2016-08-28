@@ -33,7 +33,7 @@ class DB_Connection
 		if( null == $host && null == $username && null == $password ) {
 			$this->host = "localhost";
 			$this->username = "root";
-			$this->password = "perper2014";
+			$this->password = "root";
 			$this->database = "url_shortener";
 
 			return ;

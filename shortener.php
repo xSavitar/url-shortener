@@ -47,13 +47,12 @@ if ( $LINK_TL === $link ) {
           <span class="glyphicon glyphicon-link"></span>
           <h1>URL Shortener</h1>
           <h4>d3r1ck</h4>
-
           <div class="row">
           <div class="col-lg-12">
               <div class="input-group input-group-lg">
-                <input id="urlfield" type="text" name="link" class="form-control" placeholder="Paste a link here...">
+                <input id="urlfield" type="text" name="link" class="form-control" placeholder="Paste a link here..." required>
                 <span class="input-group-btn">
-                  <button class="btn btn-shorten" type="button">SHORTEN URL</button>
+                  <button class="btn btn-shorten" type="submit">SHORTEN URL</button>
                 </span>
               </div>
             </div>

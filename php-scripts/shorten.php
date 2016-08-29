@@ -17,6 +17,11 @@
 
 	// get the current link when visited
 	$link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+	//eliminate all unecessary characters from the link like additional space
+	$link = trim($link);
+  	$link = htmlspecialchars($link);
+
 	
 	if ( $LINK_TL_SCRIPT === $link ) {
 

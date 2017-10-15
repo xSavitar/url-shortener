@@ -11,16 +11,17 @@ $link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 if ( $LINK_TL === $link ) {
 
+  // do nothing
 
 } elseif ( $LINK_LH === $link ) {
 
 
 } else {
 
-    // Include the Checker.php file
-    include 'php-scripts/Checker.php';
+  // Include the Checker.php file
+  include 'php/Checker.php';
 
-    exit();
+  exit();
 
 }
 
@@ -48,7 +49,7 @@ if ( $LINK_TL === $link ) {
           <h1>URL Shortener</h1>
           <h4>d3r1ck</h4>
           <div class="row">
-          <div class="col-lg-12">
+            <div class="col-lg-12">
               <div class="input-group input-group-lg">
                 <input id="urlfield" type="text" name="link" class="form-control" placeholder="Paste a link here..." required>
                 <span class="input-group-btn">
@@ -69,6 +70,6 @@ if ( $LINK_TL === $link ) {
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="javascript/shorten.js"></script>
+  <script src="js/shorten.js"></script>
 </body>
 </html>

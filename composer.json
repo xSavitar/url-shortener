@@ -1,5 +1,5 @@
 {
-    "name": "root/url-shortener",
+    "name": "url/url-shortener",
     "description": "URL shortener for PHP",
     "type": "project",
     "require-dev": {
@@ -10,6 +10,10 @@
         {
             "name": "Alangi Derick",
             "email": "alangiderick@gmail.com"
+        },
+        {
+            "name": "Perside Rosalie",
+            "email": "rosalieperside@gmail.com"
         }
     ]
 }

@@ -4,7 +4,7 @@ $( '.btn-shorten' ).on( 'click', function() {
 
     if ( protocol[0] === "http" || protocol[0] === "https" ) {
         $.ajax( {
-            url: "../php/shorten.php",
+            url: "php/shorten.php",
             type: "POST",
             dataType: "JSON",
 

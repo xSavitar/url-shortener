@@ -75,7 +75,7 @@
 				// do nothing
 			}
 
-			$query = "INSERT INTO urls (id, short_url, long_url) VALUES ('', '$short_link', '$long_link');";
+			$query = "INSERT INTO urls(short_url, long_url) VALUES ('$short_link', '$long_link');";
 
 			$res = $db_utilities->db_query( $con, $query );
 

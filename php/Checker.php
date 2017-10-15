@@ -4,53 +4,48 @@ include ( "DB_Connection.php" );
 include ( "DB_Utilities.php" );
 
 // official link to wmflabs server
-$LINK_TL = "tools.wmflabs.org/durl-shortener/shortener.php";
+$LABS_HOST = "tools.wmflabs.org";
 
 // official link to the localhost server
-$LINK_LH = "localhost:3000/shortener.php";
+$LOCAL_HOST = "localhost:3000";
 
-// get the current link when visited
-$link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+// get host link
+$host_link = "$_SERVER[HTTP_HOST]";
 
-if ( $LINK_TL === $link ) {
+if ( $host_link === $LABS_HOST ) {
 
   $database_obj = new DB_Connection( "", "", "", "" );
 
-} elseif ( $LINK_LH === $link ) {
+} else if ( $host_link === $LOCAL_HOST ) {
 
-  // do nothing
+  // get input link
+  $request_link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-}
-
-else {
-  if ( $_SERVER[HTTP_HOST] == "localhost:3000" ) {
-
-    $database_obj = new DB_Connection( null, null, null, null );
-
-  } else {
-
-    $database_obj = new DB_Connection( "host", "username", "password", "database" );
-
-  }
+  $database_obj = new DB_Connection( null, null, null, null );
 
   $con = $database_obj->db_connection();
 
   if ( $con ) {
 
-    $query = "SELECT * FROM urls WHERE short_url='$link';";
+    $query = "SELECT * FROM urls WHERE short_url='$request_link';";
 
     $db_utility_obj = new DB_Utilities();
 
     $results = $db_utility_obj->db_query( $con, $query );
+
     if ( !$results ) {
 
       die();
 
     }
-    if ( $results > 0 ) {
+
+    $row_count = $db_utility_obj->db_num_rows( $results );
+    echo $row_count;
+
+    if ( $row_count > 0 ) {
 
       $row = $db_utility_obj->db_fetch_row( $results );
-      //return var_dump("I am here....");
+
       header( "Location: " . $row[2] . "" );
       
     }
@@ -65,4 +60,9 @@ else {
     die ( "Couldn't connect to Database, try again later!" );
 
   }
+
+}
+
+else {
+  // do nothing for now
 }

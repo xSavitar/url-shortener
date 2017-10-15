@@ -40,7 +40,6 @@ if ( $host_link === $LABS_HOST ) {
     }
 
     $row_count = $db_utility_obj->db_num_rows( $results );
-    echo $row_count;
 
     if ( $row_count > 0 ) {
 

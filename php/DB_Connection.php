@@ -40,7 +40,7 @@ class DB_Connection {
 			$this->password = getenv( 'LOCAL_DB_PASSWORD' );
 			$this->database = getenv( 'LOCAL_DB_NAME' );
 
-			return $this->host;
+			return ;
 		} 
 
 		$this->host = getenv( 'LABS_DB_HOST' );

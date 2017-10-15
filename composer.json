@@ -1,0 +1,15 @@
+{
+    "name": "root/url-shortener",
+    "description": "URL shortener for PHP",
+    "type": "project",
+    "require-dev": {
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alangi Derick",
+            "email": "alangiderick@gmail.com"
+        }
+    ]
+}

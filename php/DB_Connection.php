@@ -31,6 +31,7 @@ class DB_Connection {
 	 */
 	function __construct( $host = null, $username = null, $password = null, $database = null) {
 		if ( $host == null && $username == null && $password == null && $database == null ) {
+
 			$dotenv = new Dotenv\Dotenv(__DIR__."/../");
 			$dotenv->load();
 

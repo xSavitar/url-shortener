@@ -1,5 +1,5 @@
 <?php
 
 	// application entry point
-	header( "Location: shortener.php" );
+	header( "Location: /shortener.php" );
 

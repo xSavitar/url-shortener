@@ -4,28 +4,28 @@
 	include( "DB_Utilities.php" );
 
 	// official Link on tool labs server to php scripts
-	$LINK_TL_SCRIPT = "tools.wmflabs.org/durl-shortener/php/shorten.php";
+	$LABS_SCRIPT = "tools.wmflabs.org/durl-shortener/php/shorten.php";
 
 	// official link on tool labs to server
-	$LINK_TL = "tools.wmflabs.org/durl-shortener/shortener.php";
+	$LABS_HOST = "tools.wmflabs.org/durl-shortener/shortener.php";
 
 	// official Link on localhost server
-	$LINK_LH_SCRIPT = "localhost:3000/php/shorten.php";
+	$LOCAL_SCRIPT = "localhost:3000/php/shorten.php";
 
 	// official Link on localhost server to php scripts
-	$LINK_LH = "localhost:3000/shortener.php";
+	$LOCAL_HOST = "localhost:3000/shortener.php";
 
 	// get the current link when visited
-	$link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$request_link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 	// eliminate all unecessary characters from the link like additional space
-	$link = htmlspecialchars( trim( $link ) );
+	$request_link = htmlspecialchars( trim( $request_link ) );
 	
-	if ( $LINK_TL_SCRIPT === $link ) {
+	if ( $LABS_SCRIPT === $request_link ) {
 
 		$database_obj = new DB_Connection( "host", "username", "password", "database" );
 
-	} else if ( $LINK_LH_SCRIPT === $link ) {
+	} else if ( $LOCAL_SCRIPT === $request_link ) {
 
 		$database_obj = new DB_Connection( null, null, null, null );
 
@@ -62,20 +62,20 @@
 		
 			$hash = substr( strtolower( preg_replace( '/[0-9_\/]+/','', base64_encode( sha1( $long_link ) ) ) ), 0, 8 );
 
-			if ( $LINK_TL_SCRIPT === $link ) {
+			if ( $LABS_SCRIPT === $request_link ) {
 
-				$short_link = $LINK_TL . '/' . $hash;
+				$short_link = $LABS_HOST . '/' . $hash;
 
 
-			} else if ( $LINK_LH_SCRIPT === $link ) {
+			} else if ( $LOCAL_SCRIPT === $request_link ) {
 
-				$short_link = $LINK_LH . '/' . $hash;
+				$short_link = $LOCAL_HOST . '/' . $hash;
 
 			} else {
 				// do nothing
 			}
 
-			$query = "INSERT INTO urls (id, short_url, long_url) VALUES ('', '$short_link', '$long_link');";
+			$query = "INSERT INTO urls(short_url, long_url) VALUES ('$short_link', '$long_link');";
 
 			$res = $db_utilities->db_query( $con, $query );
 

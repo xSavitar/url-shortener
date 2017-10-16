@@ -23,11 +23,6 @@ class Environment
     const productionScript = 'tools.wmflabs.org/durl-shortener/php/shorten.php';
 
     public function __construct( $environment ) {
-        if ( $environment == "dev" ) {
-            $this->setHost( $environment );
-            $this->setScript( $environment );
-            return $this;
-        }
         $this->setHost( $environment );
         $this->setScript( $environment );
         return $this;

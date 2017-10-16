@@ -68,6 +68,7 @@ if ( $request_link === $LABS_HOST ) {
   echo $html;
 
 } else {
+  require_once 'vendor/autoload.php';
 
   // Include the Checker.php file
   include 'php/Checker.php';

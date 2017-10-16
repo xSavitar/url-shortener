@@ -3,7 +3,18 @@
     "description": "URL shortener for PHP",
     "type": "project",
     "require-dev": {
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "phpunit/phpunit": "^6.4"
+    },
+    "autoload": {
+        "classmap": [
+            "php/DB_Utilities.php",
+            "php/DB_Connection.php",
+            "php/Environments.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [ "php-tests/" ]
     },
     "license": "MIT",
     "authors": [

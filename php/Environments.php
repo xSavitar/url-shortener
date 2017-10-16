@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Class Environment
+ * Class Environments
  * Handles the environment differences between production and development
  */
-class Environment
+class Environments
 {
 
     /**

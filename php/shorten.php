@@ -3,7 +3,7 @@
 //Import the Database configurations
 include( "DB_Connection.php" );
 include( "DB_Utilities.php" );
-include( "Environment.php" );
+include( "Environments.php" );
 
 $environment = new Environment( 'dev' );
 $env = 'dev';
@@ -12,8 +12,8 @@ if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {
     $env = 'production';
 }
 
-$host = $environment->getHost( $env );
-$script = $environment->getScript( $env );
+$host = $environment->getHost();
+$script = $environment->getScript();
 
 if ( $env === 'production' ) {
     $db = new DB_Connection( "host", "username", "password", "database" );
@@ -28,7 +28,7 @@ if ( isset( $_POST['link'] ) && !empty( $_POST['link'] ) ) {
 
     $long_link = mysqli_real_escape_string( $connection, $_POST['link'] ); // Escape this, otherwise you're open to SQL injection attacks, better off using prepared statements
 
-    $search = "SELECT * FROM urls WHERE long_url = '$long_link'";
+    $search = "SELECT * FROM urls WHERE long_url = '$long_link';";
 
     $db_utilities = new DB_Utilities();
 

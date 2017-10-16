@@ -13,26 +13,26 @@ class EnvironmentsTest extends TestCase
 {
     public function testDev()
     {
-        $target = new Environment("dev");
+        $target = new Environments("dev");
         $this->assertEquals(
-            Environment::developmentHost,
+            Environments::developmentHost,
             $target->getHost()
         );
         $this->assertEquals(
-            Environment::developmentScript,
+            Environments::developmentScript,
             $target->getScript()
         );
     }
 
     public function testElse()
     {
-        $target = new Environment("anything else");
+        $target = new Environments("anything else");
         $this->assertEquals(
-            Environment::productionHost,
+            Environments::productionHost,
             $target->getHost()
         );
         $this->assertEquals(
-            Environment::productionScript,
+            Environments::productionScript,
             $target->getScript()
         );
     }

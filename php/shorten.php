@@ -7,7 +7,7 @@ if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {
     $env = "production";
 }
 
-$environment = new Environment( $env );
+$environment = new Environments( $env );
 
 $host = $environment->getHost();
 $script = $environment->getScript();

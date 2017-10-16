@@ -14,7 +14,7 @@
         ]
     },
     "autoload-dev": {
-        "classmap": [ "php-tests/" ]
+        "classmap": [ "tests/" ]
     },
     "license": "MIT",
     "authors": [

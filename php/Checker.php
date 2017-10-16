@@ -17,7 +17,7 @@ $request_link = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 if ( $host_link === $LABS_HOST ) {
 
-  $database_obj = new DB_Connection( "", "", "", "" );
+  $database_obj = new DB_Connection( "host", "username", "password", "database" );
 
 } 
 

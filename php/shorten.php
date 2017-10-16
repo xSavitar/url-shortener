@@ -5,12 +5,13 @@ include( "DB_Connection.php" );
 include( "DB_Utilities.php" );
 include( "Environments.php" );
 
-$environment = new Environment( "dev" );
 $env = "dev";
 
 if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {
     $env = "production";
 }
+
+$environment = new Environment( $env );
 
 $host = $environment->getHost();
 $script = $environment->getScript();

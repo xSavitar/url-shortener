@@ -31,11 +31,14 @@ class DB_Connection {
 	 */
 	function __construct( $host = null, $username = null, $password = null, $database = null) {
 
+		// create an env object and load the cred from the .env file.
 		$dotenv = new Dotenv\Dotenv(__DIR__."/../");
 		$dotenv->load();
 
+		// if all vars are null, then it's localhost, else it's tool labs / prod server.
 		if ( $host == null && $username == null && $password == null && $database == null ) {
 
+			// load cred for localhost
 			$this->host = getenv( 'LOCAL_DB_HOST' );
 			$this->username = getenv( 'LOCAL_DB_USER' );
 			$this->password = getenv( 'LOCAL_DB_PASSWORD' );
@@ -44,6 +47,7 @@ class DB_Connection {
 			return ;
 		}
 
+		// cred for prod server / tool labs.
 		$this->host = getenv( 'LABS_DB_HOST' );
 		$this->username = getenv( 'LABS_DB_USER' );
 		$this->password = getenv( 'LABS_DB_PASSWORD' );

@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-
 /**
 * Database class for connection to the database
 */

@@ -1,9 +1,5 @@
 <?php
-
-//Import the Database configurations
-include( "DB_Connection.php" );
-include( "DB_Utilities.php" );
-include( "Environments.php" );
+require_once '../vendor/autoload.php';
 
 $env = "dev";
 

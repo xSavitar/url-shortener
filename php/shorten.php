@@ -5,11 +5,11 @@ include( "DB_Connection.php" );
 include( "DB_Utilities.php" );
 include( "Environments.php" );
 
-$environment = new Environment( 'dev' );
-$env = 'dev';
+$environment = new Environment( "" );
+$env = "dev";
 
 if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {
-    $env = 'production';
+    $env = "production";
 }
 
 $host = $environment->getHost();

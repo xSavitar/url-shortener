@@ -26,7 +26,6 @@ class Environment
         if ( $environment == "dev" ) {
             $this->setHost( $environment );
             $this->setScript( $environment );
-
             return $this;
         }
 

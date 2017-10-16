@@ -17,21 +17,21 @@ class Environment
      */
     private $script;
 
-    const developmentHost = '//localhost:3000/shortener.php';
-    const productionHost = '//tools.wmflabs.org/durl-shortener/shortener.php';
-    const developmentScript = '//localhost:3000/php/shorten.php';
-    const productionScript = '//tools.wmflabs.org/durl-shortener/php/shorten.php';
+    const developmentHost = 'localhost:3000/shortener.php';
+    const productionHost = 'tools.wmflabs.org/durl-shortener/shortener.php';
+    const developmentScript = 'localhost:3000/php/shorten.php';
+    const productionScript = 'tools.wmflabs.org/durl-shortener/php/shorten.php';
 
-    public function __construct($environment)
-    {
-        if ($environment == 'dev') {
-            $this->setHost(self::developmentHost);
-            $this->setScript(self::developmentScript);
+    public function __construct( $environment ) {
+        if ( $environment == "dev" ) {
+            $this->setHost( $environment );
+            $this->setScript( $environment );
+
             return $this;
         }
 
-        $this->setHost(self::productionHost);
-        $this->setScript(self::productionScript);
+        $this->setHost( $environment );
+        $this->setScript( $environment );
     }
 
     /**
@@ -39,9 +39,8 @@ class Environment
      * @param $env
      * @return string
      */
-    public function setHost($env)
-    {
-        if ($env == 'dev') {
+    public function setHost( $env ) {
+        if ( $env == "dev" ) {
             $this->host = self::developmentHost;
             return $this;
         }
@@ -54,9 +53,8 @@ class Environment
      * @param $env
      * @return string
      */
-    public function setScript($env)
-    {
-        if ($env == 'dev') {
+    public function setScript( $env ) {
+        if ( $env == "dev" ) {
             $this->script = self::developmentScript;
             return $this;
         }

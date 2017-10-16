@@ -6,7 +6,6 @@ include( "DB_Utilities.php" );
 include( "Environment.php" );
 
 $environment = new Environment( 'dev' );
-
 $env = 'dev';
 
 if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {

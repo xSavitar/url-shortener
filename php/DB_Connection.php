@@ -30,10 +30,11 @@ class DB_Connection {
 	 * __construct()
 	 */
 	function __construct( $host = null, $username = null, $password = null, $database = null) {
-		if ( $host == null && $username == null && $password == null && $database == null ) {
 
-			$dotenv = new Dotenv\Dotenv(__DIR__."/../");
-			$dotenv->load();
+		$dotenv = new Dotenv\Dotenv(__DIR__."/../");
+		$dotenv->load();
+
+		if ( $host == null && $username == null && $password == null && $database == null ) {
 
 			$this->host = getenv( 'LOCAL_DB_HOST' );
 			$this->username = getenv( 'LOCAL_DB_USER' );
@@ -41,7 +42,7 @@ class DB_Connection {
 			$this->database = getenv( 'LOCAL_DB_NAME' );
 
 			return ;
-		} 
+		}
 
 		$this->host = getenv( 'LABS_DB_HOST' );
 		$this->username = getenv( 'LABS_DB_USER' );

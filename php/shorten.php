@@ -5,7 +5,7 @@ include( "DB_Connection.php" );
 include( "DB_Utilities.php" );
 include( "Environments.php" );
 
-$environment = new Environment( "" );
+$environment = new Environment( "dev" );
 $env = "dev";
 
 if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {
@@ -15,7 +15,7 @@ if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {
 $host = $environment->getHost();
 $script = $environment->getScript();
 
-if ( $env === 'production' ) {
+if ( $env === "production" ) {
     $db = new DB_Connection( "host", "username", "password", "database" );
 } else {
     $db = new DB_Connection( null, null, null, null );

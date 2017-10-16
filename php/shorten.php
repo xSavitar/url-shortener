@@ -1,88 +1,65 @@
 <?php
-	//Import the Database configurations
-	include( "DB_Connection.php" );
-	include( "DB_Utilities.php" );
+//Import the Database configurations
+include("DB_Connection.php");
+include("DB_Utilities.php");
+include('environment.php');
 
-	// official Link on tool labs server to php scripts
-	$LABS_SCRIPT = "tools.wmflabs.org/durl-shortener/php/shorten.php";
+$environment = new Environment();
 
-	// official link on tool labs to server
-	$LABS_HOST = "tools.wmflabs.org/durl-shortener/shortener.php";
+$env = 'dev';
 
-	// official Link on localhost server
-	$LOCAL_SCRIPT = "localhost:3000/php/shorten.php";
+if (str_pos('localhost', $_SERVER['HTTP_HOST']) === false) {
+    $env = 'production';
+}
 
-	// official Link on localhost server to php scripts
-	$LOCAL_HOST = "localhost:3000/shortener.php";
+$host = $environment->getHost($env);
+$script = $environment->getScript($env);
 
-	// get the current link when visited
-	$request_link = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$db = new DB_Connection();
 
-	// eliminate all unecessary characters from the link like additional space
-	$request_link = htmlspecialchars( trim( $request_link ) );
-	
-	if ( $LABS_SCRIPT === $request_link ) {
+if ($env === 'production') {
+    $db = new DB_Connection('host', 'username', 'password', 'database');
+}
 
-		$database_obj = new DB_Connection( "host", "username", "password", "database" );
+// make sure the post is parsed and data is gotten
+if (isset($_POST['link']) && !empty($_POST['link'])) {
+    // check if long_link already exist in the datadase
+    $connection = $db->db_connection();
 
-	} else if ( $LOCAL_SCRIPT === $request_link ) {
+    $long_link = mysqli_real_escape_string($connection, $_POST['link']); // Escape this, otherwise you're open to SQL injection attacks, better off using prepared statements
 
-		$database_obj = new DB_Connection( null, null, null, null );
+    $search = "SELECT * FROM urls WHERE long_url = '$long_link'";
 
-	} else {
-		// do nothing
-	}
+    $db_utilities = new DB_Utilities();
 
-	// make sure the post is parsed and data is gotten
-	if ( isset( $_POST['link'] ) && !empty( $_POST['link'] ) ) {
-		$long_link = $_POST['link'];
-		
-		// check if long_link already exist in the datadase
-		$search = "SELECT * FROM urls WHERE long_url = '$long_link'";
-		
-		$con = $database_obj->db_connection();
-			
-		$db_utilities = new DB_Utilities();
+    $res = $db_utilities->db_query($connection, $search);
 
-		$res = $db_utilities->db_query( $con, $search );
+    if (!$res) {
 
-		if ( !$res ) {
-		
-			die( "Error running query" . $db_utilities->db_error( $con ) );
-			
-		}
-		
-		if ( $db_utilities->db_num_rows( $res ) > 0 ) {
-			
-			$results = $db_utilities->db_fetch_row( $res );
-			
-		    echo json_encode( array( "shortUrl"=> $results[1] ) );
-		    
-		} else {
-		
-			$hash = substr( strtolower( preg_replace( '/[0-9_\/]+/','', base64_encode( sha1( $long_link ) ) ) ), 0, 8 );
+        die("Error running query" . $db_utilities->db_error($connection));
 
-			if ( $LABS_SCRIPT === $request_link ) {
-
-				$short_link = $LABS_HOST . '/' . $hash;
-
-
-			} else if ( $LOCAL_SCRIPT === $request_link ) {
-
-				$short_link = $LOCAL_HOST . '/' . $hash;
-
-			} else {
-				// do nothing
-			}
-
-			$query = "INSERT INTO urls(short_url, long_url) VALUES ('$short_link', '$long_link');";
-
-			$res = $db_utilities->db_query( $con, $query );
-
-			if ( !$res ) {
-				die( "Error running query" . $db_utilities->db_error( $con ) );
-			}
-
-		    echo json_encode( array( "shortUrl" => $short_link, "hash" => $hash ) );
-    	}
     }
+
+    if ($db_utilities->db_num_rows($res) > 0) {
+
+        $results = $db_utilities->db_fetch_row($res);
+
+        echo json_encode(["shortUrl" => $results[1]]);
+
+    } else {
+
+        $hash = substr(strtolower(preg_replace('/[0-9_\/]+/', '', base64_encode(sha1($long_link)))), 0, 8);
+
+        $short_link = mysqli_real_escape_string($connection, $host . DIRECTORY_SEPARATOR . $hash);
+
+        $query = "INSERT INTO urls(short_url, long_url) VALUES ('$short_link', '$long_link');";
+
+        $res = $db_utilities->db_query($connection, $query);
+
+        if (!$res) {
+            die("Error running query" . $db_utilities->db_error($connection));
+        }
+
+        echo json_encode(["shortUrl" => $short_link, "hash" => $hash]);
+    }
+}

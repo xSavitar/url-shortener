@@ -35,7 +35,7 @@ if ( $host_link === $LABS_HOST ) {
 
     if ( !$results ) {
 
-      die( "Didn't get/register any results. Check database connection: " $results);
+      die( "Didn't get/register any results. Check database connection: " . $results);
 
     }
 
@@ -45,8 +45,8 @@ if ( $host_link === $LABS_HOST ) {
 
       $row = $db_utility_obj->db_fetch_row( $results );
 
-      header( 'Location: '.$row[2] );
-      die();
+      header( 'Location: ' . $row[2] );
+
     }
     else {
 

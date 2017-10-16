@@ -2,9 +2,19 @@
     "name": "url/url-shortener",
     "description": "URL shortener for PHP",
     "type": "project",
+    "authors": [
+        {
+            "name": "Alangi Derick",
+            "email": "alangiderick@gmail.com"
+        },
+        {
+            "name": "Perside Rosalie",
+            "email": "rosalieperside@gmail.com"
+        }
+    ],
     "require-dev": {
         "vlucas/phpdotenv": "^2.4",
-        "phpunit/phpunit": "^5.7.23"
+        "phpunit/phpunit": "4.8.*"
     },
     "autoload": {
         "classmap": [
@@ -16,15 +26,5 @@
     "autoload-dev": {
         "classmap": [ "tests/" ]
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Alangi Derick",
-            "email": "alangiderick@gmail.com"
-        },
-        {
-            "name": "Perside Rosalie",
-            "email": "rosalieperside@gmail.com"
-        }
-    ]
+    "license": "MIT"
 }

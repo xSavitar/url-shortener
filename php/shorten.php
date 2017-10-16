@@ -1,6 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
 
+// default environment is localhost
 $env = "dev";
 
 if ( strpos( $_SERVER['HTTP_HOST'], "localhost" ) === false ) {

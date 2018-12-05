@@ -5,7 +5,7 @@
 class DB_Utilities extends DB_Connection {
 	// Query DB
 	public function db_query( $con, $query ) {
-		$results = mysqli_query( $con, $query );
+		$results = mysqli_query( $con, mysql_escape_string($query) );
 
 		return $results;
 	}
